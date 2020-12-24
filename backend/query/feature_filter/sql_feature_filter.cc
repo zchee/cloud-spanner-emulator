@@ -180,7 +180,7 @@ absl::Status FilterSafeModeFunction(
       zetasql::ResolvedFunctionCallBaseEnums::SAFE_ERROR_MODE) {
     safe_mode = true;
   } else {
-    DCHECK_EQ(function_call.error_mode(),
+    ZETASQL_DCHECK_EQ(function_call.error_mode(),
               zetasql::ResolvedFunctionCallBaseEnums::DEFAULT_ERROR_MODE);
   }
   ZETASQL_RET_CHECK(!safe_mode || function_call.function()->SupportsSafeErrorMode())

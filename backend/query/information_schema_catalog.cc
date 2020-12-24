@@ -283,7 +283,7 @@ const ColumnsMetaEntry& GetColumnMetadata(const zetasql::Table* table,
                                           const zetasql::Column* column) {
   auto m = FindMetadata(ColumnsMetadata(), table->Name(), column->Name());
   if (m == ColumnsMetadata()->end()) {
-    LOG(DFATAL) << "Missing metadata for column " << table->Name() << "."
+    ZETASQL_LOG(DFATAL) << "Missing metadata for column " << table->Name() << "."
                 << column->Name();
   }
   return *m;

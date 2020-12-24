@@ -93,9 +93,9 @@ http_archive(
 
 http_archive(
     name = "com_google_protobuf",
-    strip_prefix = "protobuf-3.11.2",
-    url = "https://github.com/protocolbuffers/protobuf/archive/v3.11.2.tar.gz",
-    sha256 = "e8c7601439dbd4489fe5069c33d374804990a56c2f710e00227ee5d8fd650e67"
+    strip_prefix = "protobuf-3.13.0",
+    url = "https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz",
+    sha256 = "9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a"
 )
 
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
@@ -104,9 +104,9 @@ protobuf_deps()
 
 http_archive(
     name = "com_google_absl",
-    strip_prefix = "abseil-cpp-81f34df8347a73c617f244f49cb916238857dc34",
-    url = "https://github.com/abseil/abseil-cpp/archive/81f34df8347a73c617f244f49cb916238857dc34.tar.gz",
-    sha256 = "89b1c570dd59cebf5127ff96b9b46ae8a7fe352cab4f9198e20dc7749ab8aa16",
+    strip_prefix = "abseil-cpp-0f3bb466b868b523cf1dc9b2aaaed65c77b28862",
+    url = "https://github.com/abseil/abseil-cpp/archive/0f3bb466b868b523cf1dc9b2aaaed65c77b28862.tar.gz",
+    sha256 = "3d74cdc98b42fd4257d91f652575206de195e2c824fcd8d6e6d227f85cb143ef",
 )
 
 http_archive(
@@ -132,12 +132,12 @@ grpc_deps()
 
 http_archive(
     name = "com_google_zetasql",
-    url = "https://github.com/google/zetasql/archive/1aefaa7c62fc7a50def879bb7c4225ec6974b7ef.zip",
-    strip_prefix = "zetasql-1aefaa7c62fc7a50def879bb7c4225ec6974b7ef",
+    url = "https://github.com/google/zetasql/archive/6a4e35f2a18549c991476f6ca9504ac3a4ad21a7.zip",
+    strip_prefix = "zetasql-6a4e35f2a18549c991476f6ca9504ac3a4ad21a7",
     # Patches applied:
     # - Give visibility to ZetaSQL's base library to reuse some utilities
     patches = ["//build/bazel:zetasql.patch"],
-    sha256 = "6b14c9dfb87ee73f175b81188326eed0b37ae7b842962c2810f643ac51a4c779",
+    sha256 = "e7706c55c850accbc71f165560daad5465723eb2e0af959c0aaf03d1312ed8f2",
 )
 
 load("@com_google_zetasql//bazel:zetasql_deps_step_1.bzl", "zetasql_deps_step_1")
@@ -158,9 +158,9 @@ zetasql_deps_step_4()
 
 http_archive(
     name = "com_github_googleapis_google_cloud_cpp",
-    url = "https://github.com/googleapis/google-cloud-cpp/archive/2a0aeef05715fba00a8fbcfd0d85a4afeecf0722.tar.gz",
-    strip_prefix = "google-cloud-cpp-2a0aeef05715fba00a8fbcfd0d85a4afeecf0722",
-    sha256 = "17d635d6b6b32aec8b6e069aeb0780bd77855adaa48da20e55047264e4a5c0ea",
+    url = "https://github.com/googleapis/google-cloud-cpp/archive/e96b6f859dab284b370aadc8cefbadac9e28fd31.tar.gz",
+    strip_prefix = "google-cloud-cpp-e96b6f859dab284b370aadc8cefbadac9e28fd31",
+    sha256 = "112ad599ed268237ccb611ef9e4a5b9d6d50628f1644805996550a20624baf24",
 )
 
 load("@com_github_googleapis_google_cloud_cpp//bazel:google_cloud_cpp_deps.bzl", "google_cloud_cpp_deps")

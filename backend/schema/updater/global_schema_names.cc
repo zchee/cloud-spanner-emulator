@@ -16,6 +16,7 @@
 
 #include "backend/schema/updater/global_schema_names.h"
 
+#include "absl/strings/str_format.h"
 #include "zetasql/base/statusor.h"
 #include "backend/schema/catalog/index.h"
 #include "backend/schema/catalog/table.h"
@@ -82,7 +83,7 @@ std::string GlobalSchemaNames::GenerateSequencedName(
     std::string suffix = absl::StrCat(fingerprint, kSeparator, sequence);
     std::string name = MakeName(base, suffix);
     if (names_.insert(name).second) {
-      VLOG(1) << "Generated " << type << " name: " << name;
+      ZETASQL_VLOG(1) << "Generated " << type << " name: " << name;
       return name;
     }
   }
@@ -117,7 +118,7 @@ zetasql_base::StatusOr<std::string> GlobalSchemaNames::GenerateManagedIndexName(
   // Full name = truncated(index prefix + table name + column names)
   //             + index codes + fingerprint.
   std::string name = MakeName(base, suffix);
-  VLOG(1) << "Generated managed index name: " << name;
+  ZETASQL_VLOG(1) << "Generated managed index name: " << name;
   return name;
 }
 

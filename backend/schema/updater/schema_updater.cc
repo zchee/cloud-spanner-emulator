@@ -348,7 +348,7 @@ SchemaUpdaterImpl::ApplyDDLStatements(
   std::vector<SchemaValidationContext> pending_work;
 
   for (const auto& statement : statements) {
-    VLOG(2) << "Applying statement " << statement;
+    ZETASQL_VLOG(2) << "Applying statement " << statement;
     SchemaValidationContext statement_context{storage_, &global_names_,
                                               schema_change_timestamp_};
     statement_context_ = &statement_context;
