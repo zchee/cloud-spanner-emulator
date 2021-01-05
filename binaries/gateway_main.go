@@ -26,6 +26,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"strings"
 
 	"cloud_spanner_emulator/gateway"
 )
@@ -51,6 +52,7 @@ var (
 	enableFaultInjection = flag.Bool("enable_fault_injection", false,
 		"If true, the emulator will inject faults at runtime (e.g. randomly abort commit "+
 			"requests to allow testing application abort-retry behavior).")
+	emulatorFlags = flag.String("emulator_flags", "", "comma separated another emulater flags.")
 )
 
 // resolveGRPCBinary figures out the full path to the grpc binary from the --grpc_binary flag.
@@ -99,6 +101,7 @@ func main() {
 		CopyEmulatorStderr:   *copyEmulatorStderr,
 		LogRequests:          *logRequests,
 		EnableFaultInjection: *enableFaultInjection,
+		EmulatorFlags:        strings.Split(*emulatorFlags, ","),
 	}
 	gw := gateway.New(gwopts)
 	gw.Run()

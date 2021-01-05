@@ -46,6 +46,7 @@ type Options struct {
 	CopyEmulatorStderr   bool
 	LogRequests          bool
 	EnableFaultInjection bool
+	EmulatorFlags        []string
 }
 
 // Gateway implements the emulator gateway server.
@@ -70,6 +71,9 @@ func (gw *Gateway) Run() {
 	}
 	if gw.opts.EnableFaultInjection {
 		emulatorArgs = append(emulatorArgs, "--enable_fault_injection")
+	}
+	if gw.opts.EmulatorFlags != nil {
+		emulatorArgs = append(emulatorArgs, gw.opts.EmulatorFlags...)
 	}
 
 	cmd := exec.Command(gw.opts.FrontendBinary, emulatorArgs...)
