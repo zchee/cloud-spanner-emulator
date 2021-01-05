@@ -1,0 +1,32 @@
+version: 2.1
+
+jobs:
+  darwin:
+    macos:
+      xcode: 12.3.0
+    working_directory: ~/src/github.com/GoogleCloudPlatform/cloud-spanner-emulator
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: Install bazel
+          command: |
+            brew install bazel -v -d
+            bazel version
+            bazel info java-runtime
+      - run:
+          name: Build binaries
+          command: |
+            mkdir -p /tmp/artifacts
+            bazel build -c opt --verbose_failures //binaries/...:all
+            cp ./bazel-bin/binaries/emulator_main /tmp/artifacts/
+            cp ./bazel-bin/binaries/darwin_amd64_stripped/gateway_main /tmp/artifacts/
+      - store_artifacts:
+          path: /tmp/artifacts
+
+workflows:
+  version: 2
+  build_binaries:
+    jobs:
+      - darwin:
+          context: org-global
